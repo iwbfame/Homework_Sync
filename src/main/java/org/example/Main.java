@@ -49,8 +49,10 @@ public class Main {
         return count;
     }
 
-    public static synchronized void updateMap(int countR) {
-        sizeToFreq.put(countR, sizeToFreq.getOrDefault(countR, 0) + 1);
+    public static void updateMap(int countR) {
+        synchronized (sizeToFreq) {
+            sizeToFreq.put(countR, sizeToFreq.getOrDefault(countR, 0) + 1);
+        }
     }
 
     public static void printResults() {
